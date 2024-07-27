@@ -18,4 +18,9 @@ export class SequelizeBrokerRepository implements IBrokerRepository {
         if (!broker) return null;
         return new Broker(broker.id, broker.name, broker.userId, broker.credentials);
     }
+
+    async findAll(): Promise<Broker[]> {
+        const brokers = await BrokerModel.findAll();
+        return brokers.map(broker => new Broker(broker.id, broker.name, broker.userId, broker.credentials));
+    }
 }

@@ -14,3 +14,12 @@ export const addBroker = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Failed to add broker' });
     }
 };
+
+export const getBrokers = async (req: Request, res: Response) => {
+    try {
+        const brokers = await brokerService.getAllBrokers();
+        res.status(200).json(brokers);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch brokers' });
+    }
+};

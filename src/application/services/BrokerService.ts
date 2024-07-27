@@ -14,4 +14,8 @@ export class BrokerService implements IBrokerService {
     async getBroker(id: number): Promise<Broker | null> {
         return this.brokerRepository.findById(id);
     }
+
+    async getAllBrokers(): Promise<Broker[]> {
+        return this.brokerRepository.findAll();
+    }
 }
